@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<title>动态画一个圆环</title>
+    <style>
+	html,body{
+		font-size: 100px;
+		background-color: #000;
+	}
+.hd-circle{position: relative;margin: 0 auto;width: 310px;height: 310px;transition: all 0.4s linear;-webkit-transition: all 0.4s linear;}
+.hd-circle.animate{transform: scale(2);-webkit-transform: scale(2);opacity: 0;}
+.hd-circle.active>.inner-circle{border-color: #f98530;}
+.hd-circle.active>.outer-circle{background-color: #f98530;}
+.outer-circle{position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);-webkit-transform: translate(-50%,-50%);width: 260px;height: 260px;background-color: #8f8f8f;border-radius: 50%;}
+.icon-bighook{position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);-webkit-transform: translate(-50%,-50%);width: 136px;height: 96px;background-position: 0 0;}
+.inner-circle{width: 310px;height: 310px;border: 10px solid #575757;border-radius: 50%;box-sizing: border-box;}
+.inner-wrap{position: absolute;top: 0;width: 155px;height: 310px;overflow: hidden;}
+.inner-left{left: 0;}
+.inner-right{right: 0;}
+#clear_bianju{padding-bottom: 0;background-color: transparent;}
+.progress{position: absolute;top: 0;width: 310px;height: 310px;border: 10px solid transparent;border-radius: 50%;box-sizing: border-box;/* z-index: 999; */}
+.left-progress{left: 0;border-top: 10px solid rgba(61, 194, 225, 1);border-left: 10px solid rgba(61, 194, 225, 1);box-shadow: 8rpx 8rpx 20rpx rgba(0, 0, 0, 1);transform: rotateZ(135deg);-webkit-transform: rotateZ(135deg);}
+.right-progress{right: 0;border-bottom: 10px solid rgba(61, 194, 225, 1);border-right: 10px solid rgba(61, 194, 225, 1);transform: rotateZ(-225deg);-webkit-transform: rotateZ(-225deg);}
+.animate.left-progress{animation: circleLeft 0.6s linear;-webkit-animation: circleLeft 0.6s linear;}
+.animate.right-progress{animation: circleRight 0.6s linear;-webkit-animation: circleRight 0.6s linear;}
+@keyframes circleLeft{
+    0%,50%{
+    	transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+    }
+    100%{
+    	transform: rotate(315deg);
+        -webkit-transform: rotate(315deg);
+    }
+}
+@keyframes circleRight{
+    0%{
+    	transform: rotate(-225deg);
+        -webkit-transform: rotate(-225deg);
+    }
+    50%,100%{
+    	transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+    }
+}
+
+</style>
+</head>
+<body>
+	
+	<div class="hd-circle">
+		<div class="inner-circle">
+			<div class="inner-wrap inner-left">
+				<div class="progress left-progress animate"></div>
+			</div>
+			<div class="inner-wrap inner-right">
+				<div class="progress right-progress animate"></div>
+			</div>
+		</div>
+	</div>
+						
+</body>
+</html>
